@@ -29,7 +29,7 @@ SWEP.Base = "arc9_base"
 
 SWEP.Spawnable = true
 SWEP.Category = "ARC9 - Black Ops Cold War"
-SWEP.SubCategory = "10Special"
+SWEP.SubCategory = "Special"
 SWEP.AdminOnly = false
 
 SWEP.PrintName = "M79"
@@ -66,7 +66,7 @@ SWEP.MirrorVMWM = true
 SWEP.DefaultBodygroups = "00000000000000"
 
 SWEP.WorldModelOffset = {
-    Pos = Vector(-6, 4, -6.2),
+    Pos = Vector(-8, 4, -6.2),
     Ang = Angle(-10, 0, 180),
     Scale = 1
 }
@@ -131,9 +131,9 @@ SWEP.TracerSize = 0.5
 
 -------------------------- MAGAZINE
 
-SWEP.Ammo = "ar2" -- What ammo type this gun uses.
+SWEP.Ammo = "SMG1_Grenade" -- What ammo type this gun uses.
 
-SWEP.ChamberSize = 1 -- The amount of rounds this gun can chamber.
+SWEP.ChamberSize = 0 -- The amount of rounds this gun can chamber.
 SWEP.ClipSize = 1 -- Self-explanatory.
 SWEP.SupplyLimit = 3 -- Amount of magazines of ammo this gun can take from an ARC-9 supply crate.
 SWEP.SecondarySupplyLimit = 2 -- Amount of reserve UBGL magazines you can take.
@@ -145,7 +145,7 @@ SWEP.InfiniteAmmo = false -- Weapon does not take from reserve ammo
 SWEP.BottomlessClip = false -- Weapon never has to reload
 
 SWEP.ReloadWhileSprint = true -- This weapon can reload while the user is sprinting.
-SWEP.ReloadInSights = true -- This weapon can aim down sights while reloading.
+SWEP.ReloadInSights = false -- This weapon can aim down sights while reloading.
 
 SWEP.CanFireUnderwater = false -- This weapon can shoot while underwater.
 
@@ -287,13 +287,13 @@ SWEP.ShootPitchVariation = 0.05
 SWEP.FirstShootSound = nil                      -- First fire
 SWEP.ShootSound = "ARC9_BOCW.M79_fire"                            -- Fire
 --SWEP.ShootSoundIndoor = "ARC9_BOCW.M79_fire_int_decay"                  -- Fire indoors
-SWEP.ShootSoundSilenced = "ARC9_BOCW.M79_fire_silenced"                    -- Fire silenced
+SWEP.ShootSoundSilenced = ""                    -- Fire silenced
 SWEP.ShootSoundIndoorSilenced = nil             -- Fire indoors silenced
 SWEP.FirstShootSoundSilenced = nil              -- First fire silenced
 SWEP.FirstDistantShootSound = nil               -- First distant fire
-SWEP.DistantShootSound = "ARC9_BOCW.Shared_Decay_Close_Pistol"                     -- Distant fire
+SWEP.DistantShootSound = ""                     -- Distant fire
 SWEP.DistantShootSoundIndoor = nil              -- Distant fire indoors
-SWEP.DistantShootSoundSilenced = "ARC9_BOCW.Shared_Decay_Close_Suppressor"            -- Distant fire silenced
+SWEP.DistantShootSoundSilenced = ""             -- Distant fire silenced
 SWEP.DistantShootSoundIndoorSilenced = nil      -- Distant fire indoors silenced
 SWEP.FirstDistantShootSoundSilenced = nil       -- First distant fire silenced
 
@@ -340,8 +340,7 @@ SWEP.ShellPitch = 100 -- for shell sounds
 SWEP.ShellSounds = ARC9.ShellSoundsTable
 
 SWEP.MuzzleEffectQCA = 1 -- QC Attachment that controls muzzle effect.
-SWEP.CaseEffectQCA = 2 -- QC Attachment for shell ejection.
-SWEP.CamQCA = 3
+SWEP.CamQCA = 2
 
 
 --SWEP.DoFireAnimation = true
@@ -370,11 +369,9 @@ SWEP.CaseBGs = {}
 SWEP.StripperClipBGs = {}
 
 SWEP.HideBones = {
-    "tag_clip1"
+    "tag_clip_reload_animate"
 } -- bones to hide in third person and customize menu. {"list", "of", "bones"}
 SWEP.ReloadHideBoneTables = {
-    [1] = {"tag_clip1"},
-    [2] = {"tag_clip", "tag_bullet_animate"} -- works only with TPIK
 }
 
 SWEP.PoseParameters = {} -- Poseparameters to manage. ["parameter"] = starting value.
@@ -430,9 +427,9 @@ SWEP.SightMidPoint = {
 }
 
 -- Position for customizing
-SWEP.CustomizeAng = Angle(90, 0, 0)
-SWEP.CustomizePos = Vector(20, 45, 3)
-SWEP.CustomizeRotateAnchor = Vector(20, 0, -5)
+SWEP.CustomizeAng = Angle(90, 0, -16)
+SWEP.CustomizePos = Vector(5, 35, 7)
+SWEP.CustomizeRotateAnchor = Vector(8, 0, -7)
 
 SWEP.CustomizeSnapshotFOV = 70
 SWEP.CustomizeSnapshotPos = Vector(0, 20, 0)
@@ -533,505 +530,42 @@ SWEP.Animations = {
         Source = "ads_in",
         Time = 1,
     },
-    ["enter_sights_empty"] = {
-        Source = "ads_in_empty",
-        Time = 1,
-    },
     ["idle_sights"] = {
         Source = "idle",
-        Time = 1,
-    },
-    ["idle_sights_empty"] = {
-        Source = "idle_empty",
         Time = 1,
     },
     ["exit_sights"] = {
         Source = "ads_out",
         Time = 1,
     },
-    ["exit_sights_empty"] = {
-        Source = "ads_out_empty",
-        Time = 1,
-    },
     ["draw"] = {
         Source = "draw",
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 1,
-                lhik = 1,
-                rhik = 0
-            },
-        },
     },
     ["holster"] = {
         Source = "holster",
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 1,
-                lhik = 1,
-                rhik = 0
-            },
-        },
     },
     ["ready"] = {
         Source = {"ready"},
         EventTable = {
-            { s = "ARC9_BOCW.M79_boltback", t = 0.2 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 0.5 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 1,
-                lhik = 1,
-                rhik = 0
-            },
+            { s = "ARC9_BOCW.M79_ready", t = 0 },
         },
     },
     ["bash"] = {
         Source = "melee",
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.2,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.65,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.8,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["bash_empty"] = {
-        Source = "melee_empty",
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.2,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.65,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.8,
-                lhik = 1,
-                rhik = 0
-            },
-        },
     },
     ["fire"] = {
         Source = {"fire"},
-        EjectAt = 0,
     },
-    ["fire_empty"] = {
-        Source = {"fire_last"},
-        EjectAt = 0,
-    },
-    ["fire_optic"] = {
-        Source = {"fire_optic"},
-        EjectAt = 0,
-    },
-    ["reload"] = {
+    ["reload_empty"] = {
         Source = "reload",
-        Time = 2.3,
+        Time = 3.03,
         NoMagSwap = true,
         MinProgress = 0.65,
         EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1.85 },
-            { hide = 1, t = 0 },
-            { hide = 0, t = 0.2 },
-            { hide = 2, t = 1.9 },
-            { hide = 1, t = 2.25 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.75,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_empty"] = {
-        Source = "reload_empty",
-        Time = 3.25,
-        MinProgress = 0.5,
-        DropMagAt = 0.6,
-        MagSwapTime = 1,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_boltback", t = 2.1 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 2.4 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 2.8 },
-            { hide = 1, t = 0 },
-            { hide = 0, t = 0.2 },
-            { hide = 2, t = 1 },
-            { hide = 1, t = 2.68},
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.5,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.6,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_ext"] = {
-        Source = "reload_ext",
-        Time = 2.3,
-        MinProgress = 0.65,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1.85 },
-            { hide = 1, t = 0 },
-            { hide = 0, t = 0.2 },
-            { hide = 2, t = 1.9 },
-            { hide = 1, t = 2.25 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.75,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_empty_ext"] = {
-        Source = "reload_ext_empty",
-        Time = 3.25,
-        MinProgress = 0.4,
-        MagSwapTime = 1,
-        DropMagAt = 0.6,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_boltback", t = 2.1 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 2.4 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 2.8 },
-            { hide = 1, t = 0 },
-            { hide = 0, t = 0.2 },
-            -- duplicate attachments fucks this up, it hides both mags when the mag bone is hid
-            -- cant go further than this with the reloadhidebones, sorry. goes for rest of att mags
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.5,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.6,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_dual"] = {
-        Source = "reload_dual",
-        Time = 2.3,
-        MinProgress = 0.6,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.3 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1.8 },
-            { hide = 1, t = 0 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.75,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["1_reload_dual"] = {
-        Source = "reload_dual2",
-        Time = 2.3,
-        MinProgress = 0.65,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.3 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1.85 },
-            { hide = 1, t = 0 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.75,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_empty_dual"] = {
-        Source = "reload_dual_empty",
-        Time = 3.25,
-        MinProgress = 0.5,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.3 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_boltback", t = 1.9 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 2.2 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 2.7 },
-            { hide = 1, t = 0 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.55,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.6,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["1_reload_empty_dual"] = {
-        Source = "reload_dual2_empty",
-        Time = 3.25,
-        MinProgress = 0.5,
-        DropMagAt = 1.1,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.3 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_boltback", t = 1.9 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 2.2 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 2.7 },
-            { hide = 1, t = 0 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.55,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.6,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_mix"] = {
-        Source = "reload_mix",
-        Time = 2.3,
-        MinProgress = 0.58,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 1.8 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.75,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["reload_empty_mix"] = {
-        Source = "reload_mix_empty",
-        Time = 3.25,
-        MinProgress = 0.4,
-        MagSwapTime = 1,
-        EventTable = {
-            { s = "ARC9_BOCW.M79_reload_start", t = 0 },
-            { s = "ARC9_BOCW.M79_reload_magout", t = 0.4 },
-            { s = "ARC9_BOCW.M79_reload_dual_magin", t = 1.1 },
-            { s = "ARC9_BOCW.M79_boltback", t = 2.1 },
-            { s = "ARC9_BOCW.M79_boltrelease", t = 2.4 },
-            { s = "ARC9_BOCW.M79_reload_end", t = 2.7 },
-            { hide = 1, t = 0 },
-            { hide = 0, t = 0.2 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.55,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.6,
-                lhik = 1,
-                rhik = 0
-            },
+            { s = "ARC9_BOCW.M79_reload_open", t = 0 },
+            { s = "ARC9_BOCW.M79_reload_casing", t = 0.4 },
+            { s = "ARC9_BOCW.M79_reload_load", t = 1.1 },
+            { s = "ARC9_BOCW.M79_reload_close", t = 1.7 },
         },
     },
     ["enter_sprint"] = {
@@ -1049,83 +583,10 @@ SWEP.Animations = {
         Time = 0.4,
         NoStatAffectors = true
     },
-    ["enter_sprint_empty"] = {
-        Source = "sprint_in_empty",
-        Time = 0.4,
-        NoStatAffectors = true
-    },
-    ["idle_sprint_empty"] = {
-        Source = "sprint_loop_empty",
-        Time = 2,
-        NoStatAffectors = true
-    },
-    ["exit_sprint_empty"] = {
-        Source = "sprint_out_empty",
-        Time = 0.4,
-        NoStatAffectors = true
-    },
     ["enter_inspect"] = {
         Source = "inspect",
         EventTable = {
-            { s = "ARC9_BOCW.M79_inspect_part1", t = 0 },
-            { s = "ARC9_BOCW.M79_inspect_part2", t = 1.8 },
-            { s = "ARC9_BOCW.M79_inspect_part3", t = 2.6 },
-            { s = "ARC9_BOCW.M79_inspect_part4", t = 3.4 },
-            { s = "ARC9_BOCW.M79_inspect_part5", t = 4.6 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.5,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.65,
-                lhik = 1,
-                rhik = 0
-            },
-        },
-    },
-    ["enter_inspect_grip"] = {
-        Source = "inspect_grip",
-        EventTable = {
-            { s = "ARC9_BOCW.M79_inspect_part1", t = 0 },
-            { s = "ARC9_BOCW.M79_inspect_part2", t = 1.8 },
-            { s = "ARC9_BOCW.M79_inspect_part3", t = 2.6 },
-            { s = "ARC9_BOCW.M79_inspect_part4", t = 3.4 },
-            { s = "ARC9_BOCW.M79_inspect_part5", t = 4.6 },
-        },
-        IKTimeLine = {
-            {
-                t = 0,
-                lhik = 1,
-                rhik = 0
-            },
-            {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.9,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 0.95,
-                lhik = 1,
-                rhik = 0
-            },
+            { s = "ARC9_BOCW.M79_inspect", t = 0 },
         },
     },
 }
