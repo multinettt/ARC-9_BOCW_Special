@@ -1,15 +1,13 @@
-# ARC9 BOCW Melee
+# ARC9 BOCW Special
 
-The BOCW Knife on [ARC9](https://github.com/HaodongMo/ARC-9) base.
+The BOCW M79 on [ARC9](https://github.com/HaodongMo/ARC-9) base.
 
 ## You need to have [Shared Content](https://github.com/multinettt/ARC-9_BOCW_Shared_Content) in order to avoid missing textures, materials and sounds.
 
-## [BOCW Attachments](https://github.com/multinettt/ARC-9_BOCW_Attachments)
-
 ## Weapons List:
-### Melee:
+### Special:
 
-- Knife
+- M79
 
 ## Personalization:
 
