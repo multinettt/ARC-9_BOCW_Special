@@ -11,137 +11,60 @@ ooo        ooooo  ooooooooo  .ooooo.
  8    Y     888     .8'         .88P'  
 o8o        o888o   .8'        .oP'     
 ]]
--- MAGAZINE
+-- READY FOLEY
 
 sound.Add({
-    name = "ARC9_BOCW.Type63_reload_magout",
+    name = "ARC9_BOCW.M79_ready",
+    channel = CHAN_ITEM,
+    volume = 1.0,
+    sound = "weapons/arc9/bocw_m79/m79_ready.wav"
+})
+
+-- RELOAD
+
+sound.Add({
+    name = "ARC9_BOCW.M79_reload_open",
     channel = CHAN_AUTO,
     volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_reload_magout.wav"
+    sound = {"weapons/arc9/bocw_m79/m79_reload_open1.wav","weapons/arc9/bocw_m79/m79_reload_open2.wav","weapons/arc9/bocw_m79/m79_reload_open3.wav"}
 })
 
 sound.Add({
-    name = "ARC9_BOCW.Type63_reload_magin",
+    name = "ARC9_BOCW.M79_reload_casing",
     channel = CHAN_AUTO,
     volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_reload_magin.wav"
-})
-
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_reload_dual_magin",
-    channel = CHAN_AUTO,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_reload_dual_magin.wav"
-})
-
--- BOLT OPERATION
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_boltback",
-    channel = CHAN_AUTO,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_boltback.wav"
+    sound = {"weapons/arc9/bocw_m79/m79_reload_casing1.wav","weapons/arc9/bocw_m79/m79_reload_casing2.wav","weapons/arc9/bocw_m79/m79_reload_casing3.wav"}
 })
 
 sound.Add({
-    name = "ARC9_BOCW.Type63_boltrelease",
+    name = "ARC9_BOCW.M79_reload_load",
     channel = CHAN_AUTO,
     volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_boltrelease.wav"
-})
-
--- RELOAD FOLEY
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_reload_start",
-    channel = CHAN_AUTO,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_reload_start.wav"
+    sound = {"weapons/arc9/bocw_m79/m79_reload_load1.wav","weapons/arc9/bocw_m79/m79_reload_load2.wav","weapons/arc9/bocw_m79/m79_reload_load3.wav"}
 })
 
 sound.Add({
-    name = "ARC9_BOCW.Type63_reload_end",
+    name = "ARC9_BOCW.M79_reload_close",
     channel = CHAN_AUTO,
     volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_reload_end.wav"
+    sound = {"weapons/arc9/bocw_m79/m79_reload_close1.wav","weapons/arc9/bocw_m79/m79_reload_close2.wav","weapons/arc9/bocw_m79/m79_reload_close3.wav"}
 })
 
 -- INSPECT FOLEY
 
 sound.Add({
-    name = "ARC9_BOCW.Type63_inspect_part1",
+    name = "ARC9_BOCW.M79_inspect",
     channel = CHAN_ITEM,
     volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_inspect_part1.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_inspect_part2",
-    channel = CHAN_ITEM,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_inspect_part2.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_inspect_part3",
-    channel = CHAN_ITEM,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_inspect_part3.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_inspect_part4",
-    channel = CHAN_ITEM,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_inspect_part4.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_inspect_part5",
-    channel = CHAN_ITEM,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_inspect_part5.wav"
-})
-
--- PULLOUT PUTAWAY
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_draw",
-    channel = CHAN_AUTO,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_draw.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_holster",
-    channel = CHAN_AUTO,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_holster.wav"
+    sound = "weapons/arc9/bocw_m79/m79_inspect.wav"
 })
 
 -----------------------------------------------
 -- FIRING SOUNDS
-
 sound.Add({ -- BLACK OPS COLD WAR
-    name = "ARC9_BOCW.Type63_fire",
+    name = "ARC9_BOCW.M79_fire",
     channel = CHAN_AUTO,
     volume = 1.0,
-    level = 100,
-    sound = "weapons/arc9/bocw_type63/type63_fire.wav"
-})
-
-sound.Add({ -- WARZONE
-    name = "ARC9_BOCW.Type63_fire_wz",
-    channel = CHAN_STATIC,
-    volume = 0.7,
-    level = 100,
-    sound = "weapons/arc9/bocw_type63/type63_fire_wz.wav"
-})
-
-sound.Add({
-    name = "ARC9_BOCW.Type63_fire_silenced",
-    channel = CHAN_STATIC,
-    volume = 1.0,
-    sound = "weapons/arc9/bocw_type63/type63_fire_silenced.wav"
+    level = 75,
+    sound = "weapons/arc9/bocw_m79/m79_fire.wav"
 })
