@@ -50,6 +50,13 @@ sound.Add({
     sound = {"weapons/arc9/bocw_m79/m79_reload_close1.wav","weapons/arc9/bocw_m79/m79_reload_close2.wav","weapons/arc9/bocw_m79/m79_reload_close3.wav"}
 })
 
+sound.Add({
+    name = "ARC9_BOCW.M79_reload_end",
+    channel = CHAN_ITEM,
+    volume = 0.5,
+    sound = "weapons/arc9/bocw_m79/m79_reload_end.wav"
+})
+
 -- INSPECT FOLEY
 
 sound.Add({

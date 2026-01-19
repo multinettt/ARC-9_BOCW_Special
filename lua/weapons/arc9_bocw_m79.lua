@@ -44,8 +44,7 @@ SWEP.Trivia = {
 }
 
 SWEP.Credits = {
-     Author = "multinett",
-     --Contact = "https://steamcommunity.com/id/multinett/"
+    Author = "multinett",
 }
 
 SWEP.Description = [[Grenade launcher. Fires a grenade projectile that explodes on impact. High damage with a significant blast radius.
@@ -59,7 +58,7 @@ SWEP.UseHands = true
 SWEP.ViewModel = "models/weapons/arc9/c_arc9_m79_bocw.mdl"
 SWEP.WorldModel = "models/weapons/arc9/c_arc9_m79_bocw.mdl"
 
-SWEP.Slot = 2
+SWEP.Slot = 4
 
 SWEP.MirrorVMWM = true
 
@@ -120,6 +119,12 @@ SWEP.AlwaysPhysBullet = true
 SWEP.PhysBulletMuzzleVelocity = 625 * 39.37
 SWEP.PhysBulletDrag = 1
 SWEP.PhysBulletDontInheritPlayerVelocity = false -- Set to true to disable "Browning Effect"
+
+-------------------------- ENTITY LAUNCHING
+
+SWEP.ShootEnt = "arc9_bocw_m79_projectile" -- Set to an entity to launch it out of this weapon.
+SWEP.ShootEntForce = 10000
+SWEP.ShootEntInheritPlayerVelocity = true -- Set to true to inherit velocity
 
 -------------------------- TRACERS
 
@@ -228,14 +233,14 @@ SWEP.NPCWeight = 50
 -------------------------- HANDLING
 
 SWEP.FreeAimRadius = 0 -- In degrees, how much this gun can free aim in hip fire.
-SWEP.Sway = 0.3 -- How much the gun sways.
+SWEP.Sway = 1 -- How much the gun sways.
+SWEP.SwayMultHipFire = 0 -- How much the gun sways.
+SWEP.SwayMultSights = 0.2
 
 SWEP.HoldBreathTime = 5 -- time that you can hold breath for
 SWEP.RestoreBreathTime = 4
 
 SWEP.FreeAimRadiusSights = 0
-
-SWEP.SwayMultSights = 0.5
 
 SWEP.AimDownSightsTime = 0.350 -- How long it takes to go from hip fire to aiming down sights.
 SWEP.SprintToFireTime = 0.4 -- How long it takes to go from sprinting to being able to fire.
@@ -299,7 +304,7 @@ SWEP.FirstDistantShootSoundSilenced = nil       -- First distant fire silenced
 
 SWEP.Silencer = false -- Silencer installed or not?
 
-SWEP.DryFireSound = "ARC9_BOCW.Shared_DryFire_AR"
+SWEP.DryFireSound = "ARC9_BOCW.Shared_DryFire_Sniper"
 
 SWEP.FiremodeSound = "arc9/firemode.wav"
 SWEP.ToggleAttSound = "items/flashlight1.wav"
@@ -556,7 +561,7 @@ SWEP.Animations = {
     ["fire"] = {
         Source = {"fire"},
     },
-    ["reload_empty"] = {
+    ["reload"] = {
         Source = "reload",
         Time = 3.03,
         NoMagSwap = true,
@@ -566,6 +571,7 @@ SWEP.Animations = {
             { s = "ARC9_BOCW.M79_reload_casing", t = 0.4 },
             { s = "ARC9_BOCW.M79_reload_load", t = 1.1 },
             { s = "ARC9_BOCW.M79_reload_close", t = 1.7 },
+            { s = "ARC9_BOCW.M79_reload_end", t = 2.4 },
         },
     },
     ["enter_sprint"] = {
