@@ -188,9 +188,9 @@ SWEP.Firemodes = {
 
 -------------------------- RECOIL
 
-SWEP.Recoil = 1
+SWEP.Recoil = 3
 SWEP.RecoilSide = 0.5
-SWEP.RecoilUp = 0.5
+SWEP.RecoilUp = 1
 
 SWEP.RecoilRandomUp = 0
 SWEP.RecoilRandomSide = 0
@@ -198,14 +198,14 @@ SWEP.RecoilRandomSide = 0
 SWEP.RecoilDissipationRate = 40 -- How much recoil dissipates per second.
 SWEP.RecoilResetTime = 0.1 -- How long the gun must go before the recoil pattern starts to reset.
 
-SWEP.RecoilAutoControl = 4
+SWEP.RecoilAutoControl = 0
 SWEP.RecoilKick = 4
 
 SWEP.Spread = math.rad(1.3 / 37.5)
 SWEP.SpreadMultRecoil = 1.2
 
 SWEP.SpreadMultSights = 0.1
-SWEP.SpreadAddHipFire = math.rad(250 / 37.5)
+SWEP.SpreadAddHipFire = math.rad(130 / 37.5)
 SWEP.SpreadAddMove = math.rad(100 / 37.5)
 SWEP.SpreadAddMidAir = 0.1
 -- SWEP.SpreadAddShooting = math.rad(5 / 37.5) -- math.rad(108 / 37.5)
@@ -437,8 +437,8 @@ SWEP.CustomizePos = Vector(5, 35, 7)
 SWEP.CustomizeRotateAnchor = Vector(8, 0, -7)
 
 SWEP.CustomizeSnapshotFOV = 70
-SWEP.CustomizeSnapshotPos = Vector(0, 20, 0)
-SWEP.CustomizeSnapshotAng = Angle(0, 0, 0)
+SWEP.CustomizeSnapshotPos = Vector(9, 5, -3)
+SWEP.CustomizeSnapshotAng = Angle(0, 0, 13)
 SWEP.CustomizeNoRotate = false
 
 SWEP.BipodPos = Vector(0, 4, -4)
