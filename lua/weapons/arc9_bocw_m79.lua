@@ -29,12 +29,12 @@ SWEP.Base = "arc9_base"
 
 SWEP.Spawnable = true
 SWEP.Category = "ARC9 - Black Ops Cold War"
-SWEP.SubCategory = "Special"
+SWEP.SubCategory = "9Special"
 SWEP.AdminOnly = false
 
 SWEP.PrintName = "M79"
 SWEP.TrueName = "M79"
-SWEP.Class = "Special"
+SWEP.Class = "9Special"
 SWEP.Trivia = {
     Manufacturer = "Springfield Armory",
     Calibre = "40x46mm Grenade",
