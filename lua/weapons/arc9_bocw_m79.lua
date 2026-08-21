@@ -565,6 +565,7 @@ SWEP.Animations = {
         Source = "reload",
         Time = 3.03,
         NoMagSwap = true,
+        FireASAP = 1,
         MinProgress = 0.65,
         EventTable = {
             { s = "ARC9_BOCW.M79_reload_open", t = 0 },
